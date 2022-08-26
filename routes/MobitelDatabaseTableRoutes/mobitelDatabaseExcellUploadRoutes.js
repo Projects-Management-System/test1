@@ -15,10 +15,19 @@ router.post('/mobitelProjectsDatabasesExcell/upload', (req, res) => {
       const options = { ordered: true };
       const operators = { $set: { currentUser: user } };
       const result = await Posts.insertMany(newPost, options);
-    } finally {
-      res.status(200).json({
-        success: `${newPost.length} Projects Added Successfully!`
+      return res.status(200).json({
+        success: `${newPost.length} Projects Added Successfully!`,
       });
+    } catch (err) {
+      if (err.code === 11000) {
+        return res.status(400).json({
+          error:"Planning ID must be a unique value !"
+        });
+      } else {
+        return res.status(400).json({
+          error:err
+        });
+      }
     }
   }
   run();

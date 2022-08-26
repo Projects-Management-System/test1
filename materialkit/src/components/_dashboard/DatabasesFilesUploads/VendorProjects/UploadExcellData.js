@@ -1794,14 +1794,15 @@ function UploadExcellData() {
           // }
         })
         .catch((error) => {
-          console.log(error);
-          alert(
-            'Something went wrong with your conection with the server. Please Check your internet access !'
-          );
-          // console.log(error.response);
-          // console.log(error.response.data);
-          // console.log(error.response.status);
-          // console.log(error.response.headers);
+          if (error && error.response.data.error === 'Planning ID must be a unique value !') {
+            alert('Planning ID must be a unique value !');
+            // console.log(error);
+            // console.log(error.response.data);
+            // console.log(error.response.status);
+            // console.log(error.response.headers);
+          } else if (error && error.response.data.error === 'request entity too large') {
+            alert('Too large file. Please split the file and upload !');
+          }
         });
     }
   };

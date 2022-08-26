@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const dataSchema = new mongoose.Schema({
+    
     Planning_ID: {
         type: String,
-        required: [true, "Please provide a Planning ID"],
         unique: true
     },
     Implementation_By: String,
