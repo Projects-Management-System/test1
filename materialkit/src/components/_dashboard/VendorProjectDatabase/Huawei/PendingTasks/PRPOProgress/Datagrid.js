@@ -1378,7 +1378,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Planning_ID',
-      headerName: 'Planning ID',
+      headerName: 'Planning_ID',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1389,7 +1389,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Implementation_By',
-      headerName: 'Implementation By',
+      headerName: 'Implementation_By',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1415,7 +1415,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Site_ID',
-      headerName: 'Site ID',
+      headerName: 'Site_ID',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1426,7 +1426,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Site_Name',
-      headerName: 'Site Name',
+      headerName: 'Site_Name',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1437,7 +1437,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Date',
-      headerName: 'Handover Date',
+      headerName: 'HO_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueSetter: setHO_Date,
@@ -1451,7 +1451,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Modification',
-      headerName: 'HO Modification',
+      headerName: 'HO_Modification',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1464,7 +1464,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Modified_Date',
-      headerName: 'HO Modified Date',
+      headerName: 'HO_Modified_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueSetter: setHO_Modified_Date,
@@ -1492,7 +1492,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'New_RAT',
-      headerName: 'New RAT',
+      headerName: 'New_RAT',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2074,7 +2074,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Supply_PR_Submitted',
-      headerName: 'Supply PR Submitted',
+      headerName: 'Supply_PR_Submitted',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getSupply_PR_Submitted,
@@ -2088,7 +2088,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Supply_PR_Status',
-      headerName: 'Supply PR Status',
+      headerName: 'Supply_PR_Status',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'center',
       align: 'center',
@@ -2101,7 +2101,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Supply_PR_Approved_Date',
-      headerName: 'Supply PR Approved Date',
+      headerName: 'Supply_PR_Approved_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getSupply_PR_Approved_Date,
@@ -2115,7 +2115,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Supply_PR_Number',
-      headerName: 'Supply PR Number',
+      headerName: 'Supply_PR_Number',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2126,7 +2126,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Supply_PR_Raise',
-      headerName: 'Supply PR Raise',
+      headerName: 'Supply_PR_Raise',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getSupply_PR_Raise,
@@ -2140,7 +2140,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Supply_PO_Number',
-      headerName: 'Supply PO Number',
+      headerName: 'Supply_PO_Number',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2165,7 +2165,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'IMP_PR_Submitted',
-      headerName: 'IMP PR Submitted',
+      headerName: 'IMP_PR_Submitted',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getIMP_PR_Submitted,
@@ -2179,7 +2179,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'IMP_PR_Approved_Date',
-      headerName: 'IMP PR Approved Date',
+      headerName: 'IMP_PR_Approved_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getIMP_PR_Approved_Date,
@@ -2193,7 +2193,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'IMP_PR_Number',
-      headerName: 'IMP PR Number',
+      headerName: 'IMP_PR_Number',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2204,7 +2204,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'IMP_PR_Raised',
-      headerName: 'IMP PR Raised',
+      headerName: 'IMP_PR_Raised',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getIMP_PR_Raised,
@@ -2229,7 +2229,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'IMP_PO_Issued',
-      headerName: 'IMP PO Issued',
+      headerName: 'IMP_PO_Issued',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getIMP_PO_Issued,
@@ -2243,7 +2243,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'AWR_1',
-      headerName: 'AWR 1',
+      headerName: 'AWR_1',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2254,7 +2254,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'AWR_2',
-      headerName: 'AWR 2',
+      headerName: 'AWR_2',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2265,7 +2265,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'AWR_3',
-      headerName: 'AWR 3',
+      headerName: 'AWR_3',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',

@@ -16,7 +16,7 @@ router.post('/mobitelProjectsDatabasesExcell/upload', (req, res) => {
       const operators = { $set: { currentUser: user } };
       const result = await Posts.insertMany(newPost, options);
       return res.status(200).json({
-        success: `${newPost.length} Projects Added Successfully!`,
+        success: `${newPost.length} Projects Added Successfully !`,
       });
     } catch (err) {
       if (err.code === 11000) {

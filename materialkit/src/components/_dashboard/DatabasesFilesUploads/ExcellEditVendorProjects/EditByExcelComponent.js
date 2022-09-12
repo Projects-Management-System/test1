@@ -1798,8 +1798,7 @@ function EditByExcelComponent() {
           // }
         })
         .catch((error) => {
-          console.log(error);
-          alert('Something went wrong with your database connection !');
+          alert('File is too large or Something went wrong with your database connection !');
           // console.log(error.response);
           // console.log(error.response.data);
           // console.log(error.response.status);

@@ -149,7 +149,6 @@ export default function MobitelProjectsInsights() {
           <Typography variant="h6" gutterBottom>
             Mobitel Projects Insights
           </Typography>
-          <Typography variant="h9" gutterBottom />
         </Stack>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
           <Typography variant="caption1">Select project</Typography>
@@ -168,9 +167,6 @@ export default function MobitelProjectsInsights() {
               </MenuItem>
             ))}
           </TextField>
-        </Stack>
-        <Stack direction="row" alignItems="center" justifyContent="top" mb={0}>
-          <Typography variant="h6" gutterBottom />
         </Stack>
       </Container>
       <Container maxWidth="xl">

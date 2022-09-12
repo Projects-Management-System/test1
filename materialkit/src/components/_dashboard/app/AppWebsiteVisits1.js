@@ -15,20 +15,33 @@ import { BaseOptionChart5 } from '../../charts';
 export default function AppWebsiteVisits1({
   xAxisDaysLabel,
   weeklyProgressDataMobitel,
-  weeklyProgressDataVendor,
+  weeklyProgressDataHuawei,
+  weeklyProgressDataZTE,
   completedSitesMobitel,
-  completedSitesVendor
+  completedSitesHuawei,
+  completedSitesZTE
 }) {
   const [alert1, setAlert1] = useState(false);
   const [alertContent1, setAlertContent1] = useState('');
   const [open1, setOpen1] = React.useState(false);
 
+  const weeklyProgressHuawei = weeklyProgressDataHuawei[0].data;
+  const weeklyProgressZTE = weeklyProgressDataZTE[0].data;
+  const weeklyProgressDataVendor = weeklyProgressHuawei.map((a, i) => a + weeklyProgressZTE[i]);
+
+  const weeklyTargetHuawei = weeklyProgressDataHuawei[1].data;
+  const weeklyTargetZTE = weeklyProgressDataZTE[1].data;
+  const weeklyTargetDataVendor = weeklyTargetHuawei.map((a, i) => a + weeklyTargetZTE[i]);
+
+  const completedSitesVendor = completedSitesHuawei.map((a, i) => a.concat(completedSitesZTE[i]));
+  console.log(completedSitesVendor);
+
   const weeklyProgress1 = weeklyProgressDataMobitel[0].data;
-  const weeklyProgress2 = weeklyProgressDataVendor[0].data;
+  const weeklyProgress2 = weeklyProgressDataVendor;
   const weeklyProgress = weeklyProgress1.map((a, i) => a + weeklyProgress2[i]);
 
   const weeklyTarget1 = weeklyProgressDataMobitel[1].data;
-  const weeklyTarget2 = weeklyProgressDataVendor[1].data;
+  const weeklyTarget2 = weeklyTargetDataVendor;
   const weeklyTarget = weeklyTarget1.map((a, i) => a + weeklyTarget2[i]);
 
   const weeklyProgressData = [];

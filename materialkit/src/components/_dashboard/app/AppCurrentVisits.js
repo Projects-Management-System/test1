@@ -30,8 +30,16 @@ const ChartWrapperStyle = styled('div')(({ theme }) => ({
 }));
 
 // ----------------------------------------------------------------------
-export default function AppCurrentVisits({ projectCompletionMobitel, projectCompletionVendor }) {
+export default function AppCurrentVisits({
+  projectCompletionMobitel,
+  projectCompletionHuawei,
+  projectCompletionZTE
+}) {
   const theme = useTheme();
+
+  const ProjComHuawei = projectCompletionHuawei;
+  const ProjComZTE = projectCompletionZTE;
+  const projectCompletionVendor = ProjComHuawei.map((a, i) => a + ProjComZTE[i]);
 
   const ProjCom1 = projectCompletionMobitel;
   const ProjCom2 = projectCompletionVendor;

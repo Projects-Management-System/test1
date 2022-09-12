@@ -6,7 +6,7 @@ const Posts = require("../../models/mobitelProjectsDatabase");
 
 router.post('/mobitelProjectsDatabases/save',(req,res)=>{
     let newPost = new Posts(req.body);
-    console.log(newPost);
+    // console.log(newPost);
 
     newPost.save((err, posts) =>{
       if(err){
@@ -72,8 +72,6 @@ router.get('/mobitelProjectsDatabases', async (req, res, next) => {
 
       // XaxisDataForTheGraphs: getXaxisData(), // x axis data labels array sending to the Column graghs front end.
       SevenDaysOfWeek: getSevenDaysOfWeek(), // 7 Days of Week going to front end weekly progress column graph.
-
-      mobitelProjectsOverviewData: getOvervieTableData(posts), // Getting overview data of HO scope, PAT pass scope and completed scope to the mobitel projects overview table
 
       mobitelProjectsAllMilestoneData: getMobitelProjectsAllMilestoneData(posts),
 
@@ -419,16 +417,6 @@ function getSevenDaysOfWeek() {
   }
 }
 
-// ---------------------------------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------------------------------------------
-function getchartData(posts) {
- 
-  mobilizeData = posts
- 
-  // console.log(mobilizeData);
-  return mobilizeData;
-}
 // ---------------------------------------------------------------------------------------------------------------------------
 
 let projectName = 'All Projects';
@@ -781,7 +769,7 @@ function getWeeklyProgressData(posts) {
   var yesterdayYear = [];
 
     for (var i = 0; i < 7; i++) {
-    yesterdayDate[i] = new Date(new Date().setDate(new Date().getDate() - i)).getDate();
+    yesterdayDate[i] = ('0'+(new Date(new Date().setDate(new Date().getDate() - i)).getDate())).slice(-2);
     yesterdayMonth[i] = ('0'+(new Date(new Date().setDate(new Date().getDate() - i)).getMonth() + 1)).slice(-2);
     yesterdayYear[i] = new Date(new Date().setDate(new Date().getDate() - i)).getFullYear();
 
@@ -826,17 +814,17 @@ function getWeeklyProgressOnAirSitesData(posts) {
 
     for (var i = 0; i < 7; i++) {
 
-    yesterdayDate[i] = new Date(new Date().setDate(new Date().getDate() - i)).getDate();
+    yesterdayDate[i] = ('0'+(new Date(new Date().setDate(new Date().getDate() - i)).getDate())).slice(-2);
     yesterdayMonth[i] = ('0'+(new Date(new Date().setDate(new Date().getDate() - i)).getMonth() + 1)).slice(-2);
     yesterdayYear[i] = new Date(new Date().setDate(new Date().getDate() - i)).getFullYear();
 
-    lastWeekDates[i] = yesterdayYear[i] +"-"+yesterdayMonth[i] +"-"+ yesterdayDate[i];
+    lastWeekDates[i] = yesterdayYear[i] +"-"+yesterdayMonth[i] +"-"+yesterdayDate[i];
 
     }
     lastWeekDates.reverse();
   // console.log(lastWeekDates);
   // lastWeekDates = ['2022-01-10','2022-01-11','2022-01-12','2022-01-13','2022-01-14','2022-01-15','2022-01-16']
-  
+
   var onairData = [];
   var onairSitesID = [];
   var weeklyOnAirSitesID = [];
@@ -847,7 +835,6 @@ function getWeeklyProgressOnAirSitesData(posts) {
   var onairSitesId5 = [];
   var onairSitesId6 = [];
   var onairSitesId7 = [];
-
 
   if (projectName === 'All Projects') {
 
@@ -875,150 +862,10 @@ function getWeeklyProgressOnAirSitesData(posts) {
 
     weeklyOnAirSitesID.push(onairSitesId1,onairSitesId2,onairSitesId3,onairSitesId4,onairSitesId5,onairSitesId6,onairSitesId7);
   
-    //console.log(projectName);
+  // console.log(weeklyOnAirSitesID);
   return weeklyOnAirSitesID;
 }
 
-//---------------------------------------------------------------------------------------------------------------------------
-//---------- Functions getting HO scope, PAT scope, Completed scope to the Mobitel Projects Overview Data Table  ------------
-//---------------------------------------------------------------------------------------------------------------------------
-
-function getOvervieTableData(posts) {
-
-  var overvieTableDataP1 = [];
-
-    var handOverDataP1 = posts.filter((obj) => ((obj.Project) === 'Other Project')).filter((obj) => ((obj.HO_Date !== ''))).length;
-    var patPassP1 = posts.filter((obj) => ((obj.Project) === 'Other Project')).filter((obj) => ((obj.PAT_Status === 'Pass'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var patPassMinorP1 = posts.filter((obj) => ((obj.Project) === 'Other Project')).filter((obj) => ((obj.PAT_Status === 'Pass with minor'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var sarOnlyP1 = posts.filter((obj) => ((obj.Project) === 'Other Project')).filter((obj) => ((obj.PAT_Status === 'SAR Only'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var completedP1 = posts.filter((obj) => ((obj.Project) === 'Other Project')).filter((obj) => ((obj.On_Air_Status === 'Completed'))).filter((obj) => ((obj.On_Air_Date !== ''))).length;
-
-  patPassDataP1 = patPassP1 + patPassMinorP1 + sarOnlyP1;
-
-  overvieTableDataP1.push(handOverDataP1, patPassDataP1, completedP1);
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    var overvieTableDataP2 = [];
-
-    var handOverDataP2 = posts.filter((obj) => ((obj.Project) === 'Covid P3')).filter((obj) => ((obj.HO_Date !== ''))).length;
-    var patPassP2 = posts.filter((obj) => ((obj.Project) === 'Covid P3')).filter((obj) => ((obj.PAT_Status === 'Pass'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var patPassMinorP2 = posts.filter((obj) => ((obj.Project) === 'Covid P3')).filter((obj) => ((obj.PAT_Status === 'Pass with minor'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var sarOnlyP2 = posts.filter((obj) => ((obj.Project) === 'Covid P3')).filter((obj) => ((obj.PAT_Status === 'SAR Only'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var completedP2 = posts.filter((obj) => ((obj.Project) === 'Covid P3')).filter((obj) => ((obj.On_Air_Status === 'Completed'))).filter((obj) => ((obj.On_Air_Date !== ''))).length;
-
-    patPassDataP2 = patPassP2 + patPassMinorP2 + sarOnlyP2;
-
-    overvieTableDataP2.push(handOverDataP2, patPassDataP2, completedP2);
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    var overvieTableDataP3 = [];
-
-    var handOverDataP3 = posts.filter((obj) => ((obj.Project) === 'Huawei IBBE P1')).filter((obj) => ((obj.HO_Date !== ''))).length;
-    var patPassP3 = posts.filter((obj) => ((obj.Project) === 'Huawei IBBE P1')).filter((obj) => ((obj.PAT_Status === 'Pass'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var patPassMinorP3 = posts.filter((obj) => ((obj.Project) === 'Huawei IBBE P1')).filter((obj) => ((obj.PAT_Status === 'Pass with minor'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var sarOnlyP3 = posts.filter((obj) => ((obj.Project) === 'Huawei IBBE P1')).filter((obj) => ((obj.PAT_Status === 'SAR Only'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var completedP3 = posts.filter((obj) => ((obj.Project) === 'Huawei IBBE P1')).filter((obj) => ((obj.On_Air_Status === 'Completed'))).filter((obj) => ((obj.On_Air_Date !== ''))).length;
-
-    patPassDataP3 = patPassP3 + patPassMinorP3 + sarOnlyP3;
-
-    overvieTableDataP3.push(handOverDataP3, patPassDataP3, completedP3);
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    var overvieTableDataP4 = [];
-
-    var handOverDataP4 = posts.filter((obj) => ((obj.Project) === projectName)).filter((obj) => ((obj.HO_Date !== ''))).length;
-    var patPassP4 = posts.filter((obj) => ((obj.Project) === projectName)).filter((obj) => ((obj.PAT_Status === 'Pass'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var patPassMinorP4 = posts.filter((obj) => ((obj.Project) === projectName)).filter((obj) => ((obj.PAT_Status === 'Pass with minor'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var sarOnlyP4 = posts.filter((obj) => ((obj.Project) === projectName)).filter((obj) => ((obj.PAT_Status === 'SAR Only'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-    var completedP4 = posts.filter((obj) => ((obj.Project) === projectName)).filter((obj) => ((obj.On_Air_Status === 'Completed'))).filter((obj) => ((obj.On_Air_Date !== ''))).length;
-
-    patPassDataP4 = patPassP4 + patPassMinorP4 + sarOnlyP4;
-
-    overvieTableDataP4.push(handOverDataP4, patPassDataP4, completedP4);
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-  // console.log(overvieTableDataP1);
-  // console.log(overvieTableDataP2);
-  // console.log(overvieTableDataP3);
-  // console.log(overvieTableDataP4);
-  var overvieTableData = [];
-
-  overvieTableData.push(overvieTableDataP1, overvieTableDataP2, overvieTableDataP3, overvieTableDataP4);
-  //console.log(overvieTableData);
-
-  return overvieTableData;
-}
-
-
-function getOvervieTableData(posts) {
-
-  var handOverDataP1 = posts.filter((obj) => ((obj.Project) === 'Other Project')).filter((obj) => ((obj.HO_Date !== ''))).length;
-  var handOverDataP2 = posts.filter((obj) => ((obj.Project) === 'Covid P3')).filter((obj) => ((obj.HO_Date !== ''))).length;
-  var handOverDataP3 = posts.filter((obj) => ((obj.Project) === 'Huawei IBBE P1')).filter((obj) => ((obj.HO_Date !== ''))).length;
-  var handOverDataP4 = posts.filter((obj) => ((obj.Project) === projectName)).filter((obj) => ((obj.HO_Date !== ''))).length;
-
-
-  var patPassP1 = posts.filter((obj) => ((obj.Project) === 'Other Project')).filter((obj) => ((obj.PAT_Status === 'Pass'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-  var patPassMinorP1 = posts.filter((obj) => ((obj.Project) === 'Other Project')).filter((obj) => ((obj.PAT_Status === 'Pass with minor'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-  var sarOnlyP1 = posts.filter((obj) => ((obj.Project) === 'Other Project')).filter((obj) => ((obj.PAT_Status === 'SAR Only'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-
-  var patPassP2 = posts.filter((obj) => ((obj.Project) === 'Covid P3')).filter((obj) => ((obj.PAT_Status === 'Pass'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-  var patPassMinorP2 = posts.filter((obj) => ((obj.Project) === 'Covid P3')).filter((obj) => ((obj.PAT_Status === 'Pass with minor'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-  var sarOnlyP2 = posts.filter((obj) => ((obj.Project) === 'Covid P3')).filter((obj) => ((obj.PAT_Status === 'SAR Only'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-
-  var patPassP3 = posts.filter((obj) => ((obj.Project) === 'Huawei IBBE P1')).filter((obj) => ((obj.PAT_Status === 'Pass'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-  var patPassMinorP3 = posts.filter((obj) => ((obj.Project) === 'Huawei IBBE P1')).filter((obj) => ((obj.PAT_Status === 'Pass with minor'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-  var sarOnlyP3 = posts.filter((obj) => ((obj.Project) === 'Huawei IBBE P1')).filter((obj) => ((obj.PAT_Status === 'SAR Only'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-
-  var patPassP4 = posts.filter((obj) => ((obj.Project) === projectName)).filter((obj) => ((obj.PAT_Status === 'Pass'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-  var patPassMinorP4 = posts.filter((obj) => ((obj.Project) === projectName)).filter((obj) => ((obj.PAT_Status === 'Pass with minor'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-  var sarOnlyP4 = posts.filter((obj) => ((obj.Project) === projectName)).filter((obj) => ((obj.PAT_Status === 'SAR Only'))).filter((obj) => ((obj.PAT_Pass_Date !== ''))).length;
-
-
-  var completedP1 = posts.filter((obj) => ((obj.Project) === 'Other Project')).filter((obj) => ((obj.On_Air_Status === 'Completed'))).filter((obj) => ((obj.On_Air_Date !== ''))).length;
-  var completedP2 = posts.filter((obj) => ((obj.Project) === 'Covid P3')).filter((obj) => ((obj.On_Air_Status === 'Completed'))).filter((obj) => ((obj.On_Air_Date !== ''))).length;
-  var completedP3 = posts.filter((obj) => ((obj.Project) === 'Huawei IBBE P1')).filter((obj) => ((obj.On_Air_Status === 'Completed'))).filter((obj) => ((obj.On_Air_Date !== ''))).length;
-  var completedP4 = posts.filter((obj) => ((obj.Project) === projectName)).filter((obj) => ((obj.On_Air_Status === 'Completed'))).filter((obj) => ((obj.On_Air_Date !== ''))).length;
-
-
-  patPassDataP1 = patPassP1 + patPassMinorP1 + sarOnlyP1;
-  patPassDataP2 = patPassP2 + patPassMinorP2 + sarOnlyP2;
-  patPassDataP3 = patPassP3 + patPassMinorP3 + sarOnlyP3;
-  patPassDataP4 = patPassP4 + patPassMinorP4 + sarOnlyP4;
-
-  var overvieTableData = [];
-  var handOverData = [];
-  var patPassData = [];
-  var completedData = [];
-
-  // handOverData.push(handOverDataP1, handOverDataP2, handOverDataP3, handOverDataP4);
-  // patPassData.push(patPassDataP1, patPassDataP2, patPassDataP3, patPassDataP4);
-  // completedData.push(completedP1, completedP2, completedP3, completedP4);
-//-------------------------------------------------------------------------------------------------------------------------------
-
-  handOverData.push(
-    {'HandoverData': handOverDataP1},
-    {'HandoverData': handOverDataP2},
-    {'HandoverData': handOverDataP3},
-    // {'HandoverData': handOverDataP1},
-    );
-  
-  patPassData.push(
-    {'PatPassData': patPassDataP1},
-    {'PatPassData': patPassDataP2},
-    {'PatPassData': patPassDataP3},
-    // {'PatPassData': patPassDataP4},
-    );
-
-    completedData.push(
-    {'completedData': completedP1},
-    {'completedData': completedP2},
-    {'completedData': completedP3},
-    // {'completedData': completedP4},
-    );
-
-  overvieTableData.push(handOverData, patPassData, completedData);
-  //console.log(overvieTableData);
-
-return overvieTableData;
-}
 //---------------------------------------------------------------------------------------------------------------------------
 //------------------------ Functions for getting Mobitel projects TSSR milestones to the front end  -------------------------
 //---------------------------------------------------------------------------------------------------------------------------

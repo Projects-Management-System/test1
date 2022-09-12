@@ -1510,6 +1510,7 @@ export default function DataEditFormNew() {
                 name="Planning_ID"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Planning_ID}
                 fullWidth
                 type="text"
@@ -1527,6 +1528,7 @@ export default function DataEditFormNew() {
                 inputProps={{ style: { color: 'gray' } }}
                 label="Implemented By"
                 size="small"
+                disabled
                 value={Implementation_By}
               >
                 {Implementation_ByVendor.map((option) => (
@@ -1549,6 +1551,7 @@ export default function DataEditFormNew() {
                 inputProps={{ style: { color: 'gray' } }}
                 label="Project Name"
                 size="small"
+                disabled
                 value={Project}
               >
                 {Projects.map((option) => (
@@ -1566,6 +1569,7 @@ export default function DataEditFormNew() {
                 name="Site_ID"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Site_ID}
                 fullWidth
                 type="text"
@@ -1579,6 +1583,7 @@ export default function DataEditFormNew() {
                 name="Site_Name"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Site_Name}
                 fullWidth
                 type="text"
@@ -1587,6 +1592,7 @@ export default function DataEditFormNew() {
               />
               <TextField // ------------------------------------------------------------------- HO Date--------------------------
                 size="small"
+                disabled
                 value={HO_Date}
                 InputLabelProps={{ shrink: true }}
                 name="Project_ID"
@@ -1606,6 +1612,7 @@ export default function DataEditFormNew() {
                 inputProps={{ style: { color: 'gray' } }}
                 label="HO Modification"
                 size="small"
+                disabled
                 value={HO_Modification}
               >
                 {HandoverModification.map((option) => (
@@ -1620,6 +1627,7 @@ export default function DataEditFormNew() {
               </TextField>
               <TextField // ------------------------------------------------------------------- HO_Modified_Date -------------------------
                 size="small"
+                disabled
                 value={HO_Modified_Date}
                 InputLabelProps={{ shrink: true }}
                 name="HO_Modified_Date"
@@ -1650,6 +1658,7 @@ export default function DataEditFormNew() {
                 inputProps={{ style: { color: 'gray' } }}
                 label="Scope"
                 size="small"
+                disabled
                 value={Scope}
               >
                 {Scopes.map((option) => (
@@ -1672,6 +1681,7 @@ export default function DataEditFormNew() {
                 inputProps={{ style: { color: 'gray' } }}
                 label="New RAT"
                 size="small"
+                disabled
                 value={New_RAT}
               >
                 {RATs.map((option) => (
@@ -1689,6 +1699,7 @@ export default function DataEditFormNew() {
                 name="New_Sector"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={New_Sector}
                 fullWidth
                 type="text"
@@ -1705,6 +1716,7 @@ export default function DataEditFormNew() {
                 inputProps={{ style: { color: 'gray' } }}
                 label="Approval Status"
                 size="small"
+                disabled
                 value={Approval_Status}
               >
                 {ApprovalStatus.map((option) => (
@@ -1724,6 +1736,7 @@ export default function DataEditFormNew() {
                 name="Approval_Ref"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Approval_Ref}
                 fullWidth
                 type="text"
@@ -1735,6 +1748,7 @@ export default function DataEditFormNew() {
                 name="IMP_Scenario"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={IMP_Scenario}
                 fullWidth
                 type="text"
@@ -1746,6 +1760,7 @@ export default function DataEditFormNew() {
                 name="blank1"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={blank1}
                 fullWidth
                 type="text"
@@ -1757,6 +1772,7 @@ export default function DataEditFormNew() {
                 name="blank2"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={blank2}
                 fullWidth
                 type="text"
@@ -1770,6 +1786,7 @@ export default function DataEditFormNew() {
                 name="blank3"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={blank3}
                 fullWidth
                 type="text"
@@ -1781,6 +1798,7 @@ export default function DataEditFormNew() {
                 name="Tilt"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Tilt}
                 fullWidth
                 type="text"
@@ -1792,6 +1810,7 @@ export default function DataEditFormNew() {
                 name="Azimuth"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Azimuth}
                 fullWidth
                 type="text"
@@ -1803,6 +1822,7 @@ export default function DataEditFormNew() {
                 name="Antenna_Height"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Antenna_Height}
                 fullWidth
                 type="text"
@@ -1816,6 +1836,7 @@ export default function DataEditFormNew() {
                 name="New_RRU_Type"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={New_RRU_Type}
                 fullWidth
                 type="text"
@@ -1827,6 +1848,7 @@ export default function DataEditFormNew() {
                 name="RRU_From"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={RRU_From}
                 fullWidth
                 type="text"
@@ -1838,6 +1860,7 @@ export default function DataEditFormNew() {
                 name="New_BTS_Type"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={New_BTS_Type}
                 fullWidth
                 type="text"
@@ -1849,6 +1872,7 @@ export default function DataEditFormNew() {
                 name="BTS_From"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={BTS_From}
                 fullWidth
                 type="text"
@@ -1862,6 +1886,7 @@ export default function DataEditFormNew() {
                 name="New_Antenna_Type"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={New_Antenna_Type}
                 fullWidth
                 type="text"
@@ -1873,6 +1898,7 @@ export default function DataEditFormNew() {
                 name="Antenna_From"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Antenna_From}
                 fullWidth
                 type="text"
@@ -1884,6 +1910,7 @@ export default function DataEditFormNew() {
                 name="Cards_Type_n_From"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Cards_Type_n_From}
                 fullWidth
                 type="text"
@@ -1895,6 +1922,7 @@ export default function DataEditFormNew() {
                 name="Battery_count_n_From"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Battery_count_n_From}
                 fullWidth
                 type="text"
@@ -1908,6 +1936,7 @@ export default function DataEditFormNew() {
                 name="Mobitel_Region"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Mobitel_Region}
                 fullWidth
                 type="text"
@@ -1919,6 +1948,7 @@ export default function DataEditFormNew() {
                 name="Planning_Engineer"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Planning_Engineer}
                 fullWidth
                 type="text"
@@ -1927,6 +1957,7 @@ export default function DataEditFormNew() {
               />
               <TextField // ------------------------------------------------------------------  On_Air_Target ---------------------------
                 size="small"
+                disabled
                 value={On_Air_Target}
                 InputLabelProps={{ shrink: true }}
                 name="On_Air_Target"
@@ -1950,6 +1981,7 @@ export default function DataEditFormNew() {
                 name="Planning_Comments"
                 onChange={(e) => onInputChange(e)}
                 size="small"
+                disabled
                 value={Planning_Comments}
                 fullWidth
                 type="text"

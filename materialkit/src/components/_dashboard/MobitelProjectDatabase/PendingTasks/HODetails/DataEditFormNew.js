@@ -675,7 +675,7 @@ export default function DataEditFormNew() {
     setShowCheckMark2((show) => !show);
     if (showCheckMark2 === false) {
       newPost.Assigned_Date = 'Not Applicable';
-    } else if (showCheckMark1 === true) {
+    } else if (showCheckMark2 === true) {
       newPost.Assigned_Date = '';
     }
   };
@@ -684,7 +684,7 @@ export default function DataEditFormNew() {
     setShowCheckMark3((show) => !show);
     if (showCheckMark3 === false) {
       newPost.HO_Modified_Date = 'Not Applicable';
-    } else if (showCheckMark1 === true) {
+    } else if (showCheckMark3 === true) {
       newPost.HO_Modified_Date = '';
     }
   };

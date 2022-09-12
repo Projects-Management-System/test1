@@ -1377,7 +1377,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Planning_ID',
-      headerName: 'Planning ID',
+      headerName: 'Planning_ID',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1388,7 +1388,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Implementation_By',
-      headerName: 'Implementation By',
+      headerName: 'Implementation_By',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1414,7 +1414,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Site_ID',
-      headerName: 'Site ID',
+      headerName: 'Site_ID',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1425,7 +1425,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Site_Name',
-      headerName: 'Site Name',
+      headerName: 'Site_Name',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1436,7 +1436,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Date',
-      headerName: 'Handover Date',
+      headerName: 'HO_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueSetter: setHO_Date,
@@ -1450,7 +1450,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Modification',
-      headerName: 'HO Modification',
+      headerName: 'HO_Modification',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1463,7 +1463,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Modified_Date',
-      headerName: 'HO Modified Date',
+      headerName: 'HO_Modified_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueSetter: setHO_Modified_Date,
@@ -1491,7 +1491,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'New_RAT',
-      headerName: 'New RAT',
+      headerName: 'New_RAT',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1808,7 +1808,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Sub_Contractor',
-      headerName: 'Sub Contractor',
+      headerName: 'Sub_Contractor',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1821,7 +1821,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Sub_Contractor_Remarks',
-      headerName: 'Team Allocation Remarks',
+      headerName: 'Sub_Contractor_Remarks',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1832,7 +1832,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Site_Status',
-      headerName: 'Site Status',
+      headerName: 'Site_Status',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1922,7 +1922,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Dependencies_On_Air_Target',
-      headerName: 'Dependencies On Air Target',
+      headerName: 'Dependencies_On_Air_Target',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getDependencies_On_Air_Target,

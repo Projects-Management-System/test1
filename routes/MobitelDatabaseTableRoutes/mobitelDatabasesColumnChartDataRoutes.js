@@ -133,16 +133,16 @@ function getchartData(posts) {
     for (let i = 0, s = myarray6[0]; i < myarray6.length; i++, s += myarray6[i]) cumilative6.push(s);
 
     let chartData = [];
-    let LastYearCum6 = cumilative6.slice(cumilative6.length-13, cumilative6.length-1); // On air
-    let LastYearCum5 = cumilative5.slice(cumilative5.length-13, cumilative5.length-1);;
-    let LastYearCum4 = cumilative4.slice(cumilative4.length-13, cumilative4.length-1);;
-    let LastYearCum3 = cumilative3.slice(cumilative3.length-13, cumilative3.length-1);;
-    let LastYearCum2 = cumilative2.slice(cumilative2.length-13, cumilative2.length-1);;
-    let LastYearCum1 = cumilative1.slice(cumilative1.length-13, cumilative1.length-1);; // Mobilized
+    let LastYearCum6 = cumilative6.slice(cumilative6.length-12, cumilative6.length); // On air
+    let LastYearCum5 = cumilative5.slice(cumilative5.length-12, cumilative5.length);;
+    let LastYearCum4 = cumilative4.slice(cumilative4.length-12, cumilative4.length);;
+    let LastYearCum3 = cumilative3.slice(cumilative3.length-12, cumilative3.length);;
+    let LastYearCum2 = cumilative2.slice(cumilative2.length-12, cumilative2.length);;
+    let LastYearCum1 = cumilative1.slice(cumilative1.length-12, cumilative1.length);; // Mobilized
 
     chartData.push(LastYearCum6, LastYearCum5, LastYearCum4, LastYearCum3, LastYearCum2, LastYearCum1);
 
-    // console.log(cumilative4);
+    // console.log(chartData);
     return chartData;
 }
 

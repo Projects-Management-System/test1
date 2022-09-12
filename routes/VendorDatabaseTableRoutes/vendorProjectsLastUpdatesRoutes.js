@@ -12,6 +12,10 @@ router.get('/vendorProjectsLastUpdates', async (req, res, next) => {
     let reqQuery = [];
     if (req.query.Project === 'All Vendor Projects') {
         reqQuery = {};
+    } else if (req.query.Project === 'All Huawei Projects') {
+        reqQuery = { Implementation_By : "Huawei" };
+    } else if (req.query.Project === 'All ZTE Projects') {
+        reqQuery = { Implementation_By : "ZTE" };
     } else {
         reqQuery = { ...req.query };
     }

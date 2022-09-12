@@ -351,16 +351,6 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     return { ...params.row, HO_Modified_Date };
   }
 
-  function formatHO_Modified_Date(params) {
-    if (params.value == null || params.value === '' || params.value === 'Invalid date') {
-      return '';
-    }
-    const date = params.value;
-    const dateString = moment(date).format('YYYY-MM-DD');
-    const HO_Modified_Date = dateString;
-    return HO_Modified_Date;
-  }
-
   function getOn_Air_Target(params) {
     if (
       typeof params.row.On_Air_Target === 'undefined' ||
@@ -1370,7 +1360,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Planning_ID',
-      headerName: 'Planning ID',
+      headerName: 'Planning_ID',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1380,7 +1370,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Implementation_By',
-      headerName: 'Implementation By',
+      headerName: 'Implementation_By',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1406,7 +1396,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Site_ID',
-      headerName: 'Site ID',
+      headerName: 'Site_ID',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1417,7 +1407,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Site_Name',
-      headerName: 'Site Name',
+      headerName: 'Site_Name',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1428,7 +1418,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Date',
-      headerName: 'Handover Date',
+      headerName: 'HO_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueSetter: setHO_Date,
@@ -1442,7 +1432,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Modification',
-      headerName: 'HO Modification',
+      headerName: 'HO_Modification',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1455,12 +1445,11 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Modified_Date',
-      headerName: 'HO Modified Date',
+      headerName: 'HO_Modified_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueSetter: setHO_Modified_Date,
       valueGetter: getHO_Modified_Date,
-      valueFormatter: formatHO_Modified_Date,
       headerAlign: 'left',
       align: 'left',
       width: 180,
@@ -1482,7 +1471,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'New_RAT',
-      headerName: 'New RAT',
+      headerName: 'New_RAT',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1495,7 +1484,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'New_Sector',
-      headerName: 'New Sector',
+      headerName: 'New_Sector',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1506,7 +1495,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Approval_Status',
-      headerName: 'Approval Status',
+      headerName: 'Approval_Status',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1519,7 +1508,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Approval_Ref',
-      headerName: 'Approval Ref',
+      headerName: 'Approval_Ref',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1530,7 +1519,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'IMP_Scenario',
-      headerName: 'IMP Scenario',
+      headerName: 'IMP_Scenario',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1602,7 +1591,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Antenna_Height',
-      headerName: 'Antenna Height',
+      headerName: 'Antenna_Height',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1613,7 +1602,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'New_RRU_Type',
-      headerName: 'New RRU Type',
+      headerName: 'New_RRU_Type',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1624,7 +1613,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'RRU_From',
-      headerName: 'RRU From',
+      headerName: 'RRU_From',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1635,7 +1624,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'New_BTS_Type',
-      headerName: 'New BTS Type',
+      headerName: 'New_BTS_Type',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1646,7 +1635,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'BTS_From',
-      headerName: 'BTS From',
+      headerName: 'BTS_From',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1657,7 +1646,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'New_Antenna_Type',
-      headerName: 'New Antenna Type',
+      headerName: 'New_Antenna_Type',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1668,7 +1657,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Antenna_From',
-      headerName: 'Antenna From',
+      headerName: 'Antenna_From',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1679,7 +1668,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Cards_Type_n_From',
-      headerName: 'Cards Type & From',
+      headerName: 'Cards_Type_n_From',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1690,7 +1679,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Battery_count_n_From',
-      headerName: 'Battery count & From',
+      headerName: 'Battery_count_n_From',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1701,7 +1690,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Mobitel_Region',
-      headerName: 'Mobitel Region',
+      headerName: 'Mobitel_Region',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1712,7 +1701,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Planning_Engineer',
-      headerName: 'Planning Engineer',
+      headerName: 'Planning_Engineer',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1723,7 +1712,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'On_Air_Target',
-      headerName: 'On Air Target',
+      headerName: 'On_Air_Target',
       type: 'date',
       valueGetter: getOn_Air_Target,
       valueSetter: setOn_Air_Target,
@@ -1737,7 +1726,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Planning_Comments',
-      headerName: 'Planning Comments',
+      headerName: 'Planning_Comments',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1748,7 +1737,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Site_Engineer',
-      headerName: 'Site Engineer',
+      headerName: 'Site_Engineer',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1761,7 +1750,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Assigned_Date',
-      headerName: 'Assigned Date',
+      headerName: 'Assigned_Date',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1775,14 +1764,14 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Special_Tag',
-      headerName: 'Special Tag',
+      headerName: 'Special_Tag',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
       width: 180,
       cellClassName: (params) => clsx('super-app-theme--cell'),
       type: 'singleSelect',
-      valueOptions: ['New SIte', 'GS Site', 'VIP'],
+      valueOptions: [],
       hide: true,
       editable: true
     },

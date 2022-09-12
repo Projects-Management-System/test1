@@ -1,63 +1,68 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import { merge } from 'lodash';
 import ReactApexChart from 'react-apexcharts';
-import { alpha, styled } from '@mui/material/styles';
-import { pink } from '@mui/material/colors';
-import Switch from '@mui/material/Switch';
+
 // material
-import { Card, CardHeader, Box } from '@mui/material';
+import { Card, CardHeader, Box, ButtonGroup, Button } from '@mui/material';
 //
 import { BaseOptionChart } from '../../charts';
 // ---------------------------------------------------
 
-const GreenSwitch = styled(Switch)(({ theme }) => ({
-  '& .MuiSwitch-switchBase.Mui-checked': {
-    color: pink[600],
-    '&:hover': {
-      backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity)
-    }
-  },
-  '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-    backgroundColor: pink[600]
-  }
-}));
-
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
-
-export default function AppWebsiteVisits({ chartData, xaxisData }) {
+export default function AppWebsiteVisits({ chartData, chartDataMonthly, xaxisData }) {
+  const [showChartData, setShowChartData] = useState(chartData);
   const Xaxislabels = xaxisData;
-  // console.log(xaxisData);
+
+  useEffect(() => {
+    getCumilativeData();
+  }, [xaxisData]);
+
+  const getCumilativeData = () => {
+    setShowChartData(chartData);
+  };
+
+  const getMonthlyData = async () => {
+    setShowChartData(chartDataMonthly);
+  };
+
+  const buttons = [
+    <Button onClick={getCumilativeData} key="one">
+      Cumilative Progress
+    </Button>,
+    <Button onClick={getMonthlyData} key="two">
+      Monthly Progress&nbsp;&nbsp;&nbsp;
+    </Button>
+  ];
 
   const CHART_DATA = [
     {
       name: 'On Air',
       type: 'column',
-      data: chartData[0]
+      data: showChartData[0]
     },
     {
       name: 'PAT',
       type: 'column',
-      data: chartData[1]
+      data: showChartData[1]
     },
     {
       name: 'SAR',
       type: 'column',
-      data: chartData[2]
+      data: showChartData[2]
     },
     {
       name: 'Commisioned',
       type: 'column',
-      data: chartData[3]
+      data: showChartData[3]
     },
     {
       name: 'Installed',
       type: 'column',
-      data: chartData[4]
+      data: showChartData[4]
     },
     {
       name: 'Mobilized',
       type: 'column',
-      data: chartData[5]
+      data: showChartData[5]
     }
   ];
 
@@ -83,8 +88,21 @@ export default function AppWebsiteVisits({ chartData, xaxisData }) {
 
   return (
     <Card>
-      <CardHeader title="Sites Completed" subheader="Cumilative progress" />
-      {/* <GreenSwitch {...label} defaultChecked size="small" /> */}
+      <CardHeader title="Sites Completed" />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          '& > *': {
+            m: -0.5
+          }
+        }}
+      >
+        <ButtonGroup color="secondary" size="small" aria-label="small button group">
+          {buttons}
+        </ButtonGroup>
+      </Box>
       <Box sx={{ p: 3, pb: 1 }} dir="ltr">
         <ReactApexChart type="line" series={CHART_DATA} options={chartOptions} height={391} />
       </Box>

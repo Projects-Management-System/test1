@@ -5,7 +5,7 @@ const Posts = require("../../models/mobitelProjectsDatabase");
 // ------------------------ Getting specific site data  ---------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-router.route("/mobitelProjectsDatabasesSiteEngineersAnalysis/:id").get(async(req,res) =>{
+router.route("/mobitelProjectsDatabasesSiteEngineersAnalysis/:id").get(async(req,res) => {
 
     let postId = req.params.id;
   
@@ -18,7 +18,7 @@ router.route("/mobitelProjectsDatabasesSiteEngineersAnalysis/:id").get(async(req
           post
         });
     });
-  });
+});
 
 // ---------------------- Get sites data to the graphs  ---------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -50,10 +50,10 @@ router.get('/mobitelProjectsDatabasesSiteEngineersAnalysis', async (req, res, ne
       existingPosts:posts,
 
       chartDataForFrontEnd: getchartData(posts),  // Column chart data for the site engineers front end analysis bar chart.
+      chartDataForTheFrontEndMonthlyWise: getchartDataMonthly(posts), // Column chart data for the site engineers front end analysis bar chart monthlywise.
       XaxisDataForTheGraphs: getXaxisData(), // x axis data labels array sending to the Column graghs front end.
       
       SevenDaysOfWeek: getSevenDaysOfWeek(), // 7 Days of Week going to front end weekly progress column graph.
-
 
       HandOverDataToSquares: getHandOverData(posts), // getting HO data to the Front End Mobitel Projects Insights Handover Squares.
       PatDataForFrontEnd: getPatPassData(posts),  // getting PAT Pass data to the Front End Mobitel Projects Insights PAT Pass Squares.
@@ -235,6 +235,62 @@ function getchartData(posts) {
 
   //console.log(chartData);
   return chartData;
+}
+
+//---------------------------------------------------------------------------------------------------------------------------
+//---------- Functions for Getting Graph Data to the Front End of Mobitel Project Engineers Monthly wise ----------------------
+//---------------------------------------------------------------------------------------------------------------------------
+
+function getchartDataMonthly(posts) {
+  var mobilizeData = [];
+  var installedData = [];
+  var commissioned = [];
+  var sarData = [];
+  var patData = [];
+  var onairData = [];
+
+  var theMonths = new Array("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
+  var now = new Date();
+
+  for (var i = 0; i < 12; i++) {
+
+    var future = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    var month = theMonths[future.getMonth()];
+    var year = future.getFullYear();
+    var monthsArrayReversed = [];
+
+    for (var i = 0; i < 12; i++) {
+      monthsArrayReversed.push(now.getFullYear().toString() + '-' + theMonths[now.getMonth()]);
+      now.setMonth(now.getMonth() - 1);
+    }
+    monthsArrayReversed.reverse();
+  }
+
+  let monthsArray = monthsArrayReversed;
+  // monthsArray = ['2021-02', '2021-03','2021-04', '2021-05','2021-06', '2021-07','2021-08', '2021-09','2021-10', '2021-11','2021-12', '2022-01']
+
+    for (var i = 0; i < 12; i++) {
+      mobilizeData[i] = posts.filter((obj) => ((obj.Mobilization_Status === 'Completed'))).filter((obj) => ((obj.Mobilized_Date.toString().slice(0, 7)) === monthsArray[i])).length,
+      installedData[i] = posts.filter((obj) => ((obj.Installation_Status === 'Completed'))).filter((obj) => ((obj.Installation_Date.toString().slice(0, 7)) === monthsArray[i])).length,
+      commissioned[i] = posts.filter((obj) => ((obj.Commissioning_Status === 'Completed'))).filter((obj) => ((obj.Commisioned_Date.toString().slice(0, 7)) === monthsArray[i])).length,
+      sarData[i] = posts.filter((obj) => ((obj.SAR_Status === 'Approved' || obj.SAR_Status === 'PAT Only'))).filter((obj) => ((obj.SAR_Date.toString().slice(0, 7)) === monthsArray[i])).length,
+      patData[i] = posts.filter((obj) => ((obj.PAT_Status === 'Pass' || obj.PAT_Status === 'Pass with minor'))).filter((obj) => ((obj.PAT_Pass_Date.toString().slice(0, 7)) === monthsArray[i])).length,
+      onairData[i] = posts.filter((obj) => ((obj.On_Air_Status === 'Completed'))).filter((obj) => ((obj.On_Air_Date.toString().slice(0, 7)) === monthsArray[i])).length
+    }
+  // ----------------------------------------------------------------------------------------------------------------------------------------------
+
+  let mobilizeDataArray = mobilizeData;
+  let installedDataArray= installedData;
+  let commissionedArray= commissioned;
+  let sarDataArray= sarData;
+  let patDataArray= patData;
+  let onairDataArray= onairData;
+
+  let chartDataMonthly = [];
+  chartDataMonthly.push(onairDataArray, patDataArray, sarDataArray, commissionedArray, installedDataArray, mobilizeDataArray);
+
+  // console.log(chartDataMonthly);
+  return chartDataMonthly;
 }
 
 //---------------------------------------------------------------------------------------------------------------------------

@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 // material
 import { Grid, Container, Typography, Stack, Card, Button } from '@mui/material';
 // components
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
 import Page from '../components/Page';
-import AppBugReports1 from '../components/_dashboard/app/AppBugReports1';
 import {
   AppNewUsers,
   AppBugReports,
@@ -17,14 +18,21 @@ import {
   AppWebsiteVisits,
   AppWebsiteVisits1
 } from '../components/_dashboard/app';
+import AppBugReports1 from '../components/_dashboard/app/AppBugReports1';
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 
-// -------------------------------------------------------------------------------------
-// -------------------------------------------------------------------------------------
 export default function DashboardApp() {
   const navigate = useNavigate();
   const axiosInstance = axios.create({ baseURL: process.env.REACT_APP_API_URL });
+
+  const [MobitelprojectNamesArray, setMobitelprojectNamesArray] = useState([]);
+  const [VendorprojectsHuaweiNamesArray, setVendorprojectsHuaweiNamesArray] = useState([]);
+  const [VendorprojectsZTENamesArray, setVendorprojectsZTENamesArray] = useState([]);
+
+  const [MobitelDropdownValue, setMobitelDropdownValue] = useState('All Mobitel Projects');
+  const [VendorHuaweiDropdownValue, setVendorHuaweiDropdownValue] = useState('All Huawei Projects');
+  const [VendorZTEDropdownValue, setVendorZTEDropdownValue] = useState('All ZTE Projects');
 
   const [ChartDataForColumnGraphMobitel, setChartDatForColumnGraphMobitel] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -34,7 +42,15 @@ export default function DashboardApp() {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ]);
-  const [ChartDataForColumnGraphVendor, setChartDatForColumnGraphVendor] = useState([
+  const [ChartDataForColumnGraphHuawei, setChartDatForColumnGraphHuawei] = useState([
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  ]);
+  const [ChartDataForColumnGraphZTE, setChartDatForColumnGraphZTE] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -57,37 +73,162 @@ export default function DashboardApp() {
   ]);
   const [CompletedSitesMobitel, setcompletedSitesMobitel] = useState([]);
 
-  const [ScopeDataVendor, setScopeDataVendor] = useState([]);
-  const [HandoverDataVendor, setHandoverDataVendor] = useState([]);
-  const [PATPassDataVendor, sePATPassDataVendor] = useState();
-  const [OnAirDataVendor, setOnAirDataVendor] = useState();
-  const [HoldSitesDataVendor, setHoldSitesDataVendor] = useState();
-  const [ProjectCompletionVendor, setProjectCompletionVendor] = useState([]);
-  const [WeeklyProgressDataVendor, setweeklyProgressDataVendor] = useState([
+  const [ScopeDataHuawei, setScopeDataHuawei] = useState([]);
+  const [HandoverDataHuawei, setHandoverDataHuawei] = useState([]);
+  const [PATPassDataHuawei, sePATPassDataHuawei] = useState();
+  const [OnAirDataHuawei, setOnAirDataHuawei] = useState();
+  const [HoldSitesDataHuawei, setHoldSitesDataHuawei] = useState();
+  const [ProjectCompletionHuawei, setProjectCompletionHuawei] = useState([]);
+  const [WeeklyProgressDataHuawei, setweeklyProgressDataHuawei] = useState([
     { name: 'Completed', type: 'column', data: [0, 0, 0, 0, 0, 0, 0] },
     { name: 'Targeted', type: 'column', data: [0, 0, 0, 0, 0, 0, 0] }
   ]);
-  const [CompletedSitesVendor, setcompletedSitesVendor] = useState([]);
+  const [CompletedSitesHuawei, setcompletedSitesHuawei] = useState([]);
+
+  const [ScopeDataZTE, setScopeDataZTE] = useState([]);
+  const [HandoverDataZTE, setHandoverDataZTE] = useState([]);
+  const [PATPassDataZTE, sePATPassDataZTE] = useState();
+  const [OnAirDataZTE, setOnAirDataZTE] = useState();
+  const [HoldSitesDataZTE, setHoldSitesDataZTE] = useState();
+  const [ProjectCompletionZTE, setProjectCompletionZTE] = useState([]);
+  const [WeeklyProgressDataZTE, setweeklyProgressDataZTE] = useState([
+    { name: 'Completed', type: 'column', data: [0, 0, 0, 0, 0, 0, 0] },
+    { name: 'Targeted', type: 'column', data: [0, 0, 0, 0, 0, 0, 0] }
+  ]);
+  const [CompletedSitesZTE, setcompletedSitesZTE] = useState([]);
+
   const [MobitelLastUpdates, setMobitelLastUpdates] = useState([]);
-  const [VendorLastUpdates, setVendorLastUpdates] = useState([]);
+  const [HuaweiLastUpdates, setHuaweiLastUpdates] = useState([]);
+  const [ZTELastUpdates, setZTELastUpdates] = useState([]);
   const [VendorUpdatesIsShown, setVendorUpdatesIsShown] = useState(false);
   const [MobitelUpdatesIsShown, setMobitelUpdatesIsShown] = useState(true);
 
+  const fetchMobitelProjectNames = async () => {
+    const req = await axiosInstance
+      .get('/mobitelProjectsOverviewTable/ProjectsArray')
+      .then((res) => {
+        setMobitelprojectNamesArray(res.data.mobitelProjectsNamesArrayForInsights);
+      });
+  };
+
+  const fetchHuaweiVendorProjectNames = async () => {
+    const req = await axiosInstance
+      .get('/filteredVendorProjectsNamesArray', {
+        params: { Vendor: 'Huawei' }
+      })
+      .then((res) => {
+        setVendorprojectsHuaweiNamesArray(res.data.filteredProjectNamesArray);
+      });
+  };
+
+  const fetchZTEVendorProjectNames = async () => {
+    const req = await axiosInstance
+      .get('/filteredVendorProjectsNamesArray', {
+        params: { Vendor: 'ZTE' }
+      })
+      .then((res) => {
+        setVendorprojectsZTENamesArray(res.data.filteredZTEProjectNamesArray);
+      });
+  };
+
+  const MobitelprojectNames = MobitelprojectNamesArray.concat({
+    value: '',
+    label: 'Vendor Projects Only'
+  });
+  const VendorprojectNames = VendorprojectsHuaweiNamesArray.concat({
+    value: '',
+    label: 'Mobitel Projects Only'
+  });
+
+  const VendorprojectsZTENames = VendorprojectsZTENamesArray.concat({
+    value: '',
+    label: 'Mobitel Projects Only'
+  });
+
   useEffect(() => {
     fetchMobitelData();
-    fetchVendorData();
+    fetchHuaweiVendorData();
     fetchMobitelScopeData();
-    fetchVendorScopeData();
+    fetchHuaweiVendorScopeData();
     fetchMobitelColumnGraphData();
-    fetchVendorColumnGraphData();
+    fetchHuaweiVendorColumnGraphData();
     fetchMobitelProjectsLastUpdates();
-    fetchVendorProjectsLastUpdates();
+    fetchHuaweiVendorProjectsLastUpdates();
+    fetchMobitelProjectNames();
+    fetchHuaweiVendorProjectNames();
+    fetchZTEVendorProjectNames();
+    fetchZTEVendorData();
+    fetchZTEVendorScopeData();
+    fetchZTEVendorColumnGraphData();
+    fetchZTEVendorProjectsLastUpdates();
+    fetchHuaweiVendorProjectNames();
+    fetchZTEVendorProjectNames();
   }, []);
+
+  useEffect(() => {
+    fetchMobitelData();
+    fetchHuaweiVendorData();
+    fetchMobitelScopeData();
+    fetchHuaweiVendorScopeData();
+    fetchMobitelColumnGraphData();
+    fetchHuaweiVendorColumnGraphData();
+    fetchMobitelProjectsLastUpdates();
+    fetchHuaweiVendorProjectsLastUpdates();
+    fetchMobitelProjectNames();
+    fetchHuaweiVendorProjectNames();
+    fetchZTEVendorProjectNames();
+    fetchZTEVendorData();
+    fetchZTEVendorScopeData();
+    fetchZTEVendorColumnGraphData();
+    fetchZTEVendorProjectsLastUpdates();
+    fetchHuaweiVendorProjectNames();
+    fetchZTEVendorProjectNames();
+  }, [MobitelDropdownValue]);
+
+  useEffect(() => {
+    fetchMobitelData();
+    fetchHuaweiVendorData();
+    fetchMobitelScopeData();
+    fetchHuaweiVendorScopeData();
+    fetchMobitelColumnGraphData();
+    fetchHuaweiVendorColumnGraphData();
+    fetchMobitelProjectsLastUpdates();
+    fetchHuaweiVendorProjectsLastUpdates();
+    fetchMobitelProjectNames();
+    fetchHuaweiVendorProjectNames();
+    fetchZTEVendorProjectNames();
+    fetchZTEVendorData();
+    fetchZTEVendorScopeData();
+    fetchZTEVendorColumnGraphData();
+    fetchZTEVendorProjectsLastUpdates();
+    fetchHuaweiVendorProjectNames();
+    fetchZTEVendorProjectNames();
+  }, [VendorHuaweiDropdownValue]);
+
+  useEffect(() => {
+    fetchMobitelData();
+    fetchHuaweiVendorData();
+    fetchMobitelScopeData();
+    fetchHuaweiVendorScopeData();
+    fetchMobitelColumnGraphData();
+    fetchHuaweiVendorColumnGraphData();
+    fetchMobitelProjectsLastUpdates();
+    fetchHuaweiVendorProjectsLastUpdates();
+    fetchMobitelProjectNames();
+    fetchHuaweiVendorProjectNames();
+    fetchZTEVendorProjectNames();
+    fetchZTEVendorData();
+    fetchZTEVendorScopeData();
+    fetchZTEVendorColumnGraphData();
+    fetchZTEVendorProjectsLastUpdates();
+    fetchHuaweiVendorProjectNames();
+    fetchZTEVendorProjectNames();
+  }, [VendorZTEDropdownValue]);
 
   const fetchMobitelColumnGraphData = () => {
     axiosInstance
       .get('/mobitelProjectsDatabasesChartDataColumnChartData', {
-        params: { Project: 'All Mobitel Projects' }
+        params: { Project: MobitelDropdownValue }
       })
       .then((res) => {
         setChartDatForColumnGraphMobitel(res.data.chartDataForFrontEnd);
@@ -98,7 +239,7 @@ export default function DashboardApp() {
   const fetchMobitelData = () => {
     axiosInstance
       .get('/mobitelProjectsDatabases', {
-        params: { Project: 'All Mobitel Projects' }
+        params: { Project: MobitelDropdownValue }
       })
       .then((res) => {
         setHandoverDataMobitel(res.data.HandOverDataToSquares);
@@ -115,60 +256,132 @@ export default function DashboardApp() {
   const fetchMobitelScopeData = () => {
     axiosInstance
       .get('/mobitelProjectsOverviewTable', {
-        params: { ProjectName: 'All Mobitel Projects' }
+        params: { ProjectName: MobitelDropdownValue }
       })
       .then((res) => {
         setScopeDataMobitel(res.data.scopeDataToTheFrontEnd);
       });
   };
 
-  const fetchVendorColumnGraphData = () => {
+  const fetchHuaweiVendorColumnGraphData = () => {
     axiosInstance
       .get('/vendorProjectsDatabasesChartDataColumnChartData', {
-        params: { Project: 'All Vendor Projects' }
+        params: { Project: VendorHuaweiDropdownValue }
       })
       .then((res) => {
-        setChartDatForColumnGraphVendor(res.data.chartDataForFrontEnd);
+        setChartDatForColumnGraphHuawei(res.data.chartDataForFrontEnd);
       });
   };
 
-  const fetchVendorData = () => {
+  const fetchZTEVendorColumnGraphData = () => {
+    axiosInstance
+      .get('/vendorProjectsDatabasesChartDataColumnChartData', {
+        params: { Project: VendorZTEDropdownValue }
+      })
+      .then((res) => {
+        setChartDatForColumnGraphZTE(res.data.chartDataForFrontEnd);
+      });
+  };
+
+  const fetchHuaweiVendorData = () => {
     axiosInstance
       .get('/vendorProjectsDatabases', {
-        params: { Project: 'All Vendor Projects' }
+        params: { Project: VendorHuaweiDropdownValue }
       })
       .then((res) => {
-        setHandoverDataVendor(res.data.HandOverDataToSquares);
-        sePATPassDataVendor(res.data.PatDataForFrontEnd);
-        setHoldSitesDataVendor(res.data.HoldSitesDataforSquares);
-        setOnAirDataVendor(res.data.OnAirDataForFrontEnd);
-        setProjectCompletionVendor(res.data.ProjectCompletionForFrontEnd);
-        setweeklyProgressDataVendor(res.data.weeklyProgressDataForFrontEnd);
-        setcompletedSitesVendor(res.data.WeeklyProgressOnAirSitesData);
+        setHandoverDataHuawei(res.data.HandOverDataToSquares);
+        sePATPassDataHuawei(res.data.PatDataForFrontEnd);
+        setHoldSitesDataHuawei(res.data.HoldSitesDataforSquares);
+        setOnAirDataHuawei(res.data.OnAirDataForFrontEnd);
+        setProjectCompletionHuawei(res.data.ProjectCompletionForFrontEnd);
+        setweeklyProgressDataHuawei(res.data.weeklyProgressDataForFrontEnd);
+        setcompletedSitesHuawei(res.data.WeeklyProgressOnAirSitesData);
       });
   };
 
-  const fetchVendorScopeData = () => {
+  const fetchZTEVendorData = () => {
     axiosInstance
-      .get('/vendorProjectsOverviewTable', {
-        params: { ProjectName: 'All Vendor Projects' }
+      .get('/vendorProjectsDatabases', {
+        params: { Project: VendorZTEDropdownValue }
       })
       .then((res) => {
-        setScopeDataVendor(res.data.scopeDataToTheFrontEnd);
+        setHandoverDataZTE(res.data.HandOverDataToSquares);
+        sePATPassDataZTE(res.data.PatDataForFrontEnd);
+        setHoldSitesDataZTE(res.data.HoldSitesDataforSquares);
+        setOnAirDataZTE(res.data.OnAirDataForFrontEnd);
+        setProjectCompletionZTE(res.data.ProjectCompletionForFrontEnd);
+        setweeklyProgressDataZTE(res.data.weeklyProgressDataForFrontEnd);
+        setcompletedSitesZTE(res.data.WeeklyProgressOnAirSitesData);
+      });
+  };
+
+  const fetchHuaweiVendorScopeData = () => {
+    axiosInstance
+      .get('/vendorProjectsOverviewTable', {
+        params: { ProjectName: VendorHuaweiDropdownValue }
+      })
+      .then((res) => {
+        setScopeDataHuawei(res.data.scopeDataToTheFrontEnd);
+      });
+  };
+
+  const fetchZTEVendorScopeData = () => {
+    axiosInstance
+      .get('/vendorProjectsOverviewTable', {
+        params: { ProjectName: VendorZTEDropdownValue }
+      })
+      .then((res) => {
+        setScopeDataZTE(res.data.scopeDataToTheFrontEnd);
       });
   };
 
   const fetchMobitelProjectsLastUpdates = () => {
-    axiosInstance.get('/mobitelProjectsLastUpdates').then((res) => {
-      setMobitelLastUpdates(res.data.existingPosts);
-    });
+    axiosInstance
+      .get('/mobitelProjectsLastUpdates', {
+        params: { Project: MobitelDropdownValue }
+      })
+      .then((res) => {
+        setMobitelLastUpdates(res.data.existingPosts);
+      });
   };
 
-  const fetchVendorProjectsLastUpdates = () => {
-    axiosInstance.get('/vendorProjectsLastUpdates').then((res) => {
-      setVendorLastUpdates(res.data.existingPosts);
-    });
+  const fetchHuaweiVendorProjectsLastUpdates = () => {
+    axiosInstance
+      .get('/vendorProjectsLastUpdates', {
+        params: { Project: VendorHuaweiDropdownValue }
+      })
+      .then((res) => {
+        setHuaweiLastUpdates(res.data.existingPosts);
+      });
   };
+
+  const fetchZTEVendorProjectsLastUpdates = () => {
+    axiosInstance
+      .get('/vendorProjectsLastUpdates', {
+        params: { Project: VendorZTEDropdownValue }
+      })
+      .then((res) => {
+        setZTELastUpdates(res.data.existingPosts);
+      });
+  };
+
+  const handleMobitelDropdownValue = (event) => {
+    setMobitelDropdownValue(event.target.value);
+  };
+
+  const handleHuaweiVendorDropdownValue = (event) => {
+    setVendorHuaweiDropdownValue(event.target.value);
+  };
+
+  const handleZTEVendorDropdownValue = (event) => {
+    setVendorZTEDropdownValue(event.target.value);
+  };
+
+  const ScopeDataVendor = ScopeDataHuawei + ScopeDataZTE;
+  const HandoverDataVendor = parseInt(HandoverDataHuawei, 10) + parseInt(HandoverDataZTE, 10);
+  const PATPassDataVendor = parseInt(PATPassDataHuawei, 10) + parseInt(PATPassDataZTE, 10);
+  const OnAirDataVendor = OnAirDataHuawei + OnAirDataZTE;
+  const HoldSitesDataVendor = HoldSitesDataHuawei + HoldSitesDataZTE;
 
   const ScopeData = ScopeDataMobitel + ScopeDataVendor;
   const HandoverData = parseInt(HandoverDataMobitel, 10) + parseInt(HandoverDataVendor, 10);
@@ -176,7 +389,43 @@ export default function DashboardApp() {
   const OnAirData = OnAirDataMobitel + OnAirDataVendor;
   const HoldSitesData = HoldSitesDataMobitel + HoldSitesDataVendor;
 
-  // -- ChartDataForColumnGraph ------------------------------------------------------------
+  // ----------------- Sum of two vendors Chart Data For Column Graph --------------------
+
+  const onAirHuawei = ChartDataForColumnGraphHuawei[0];
+  const onAirZTE = ChartDataForColumnGraphZTE[0];
+  const AllvendorOnAir = onAirHuawei.map((a, i) => a + onAirZTE[i]);
+  // ----------------------------------------------
+  const PATHuawei = ChartDataForColumnGraphHuawei[1];
+  const PATZTE = ChartDataForColumnGraphZTE[1];
+  const AllvendorPAT = PATHuawei.map((a, i) => a + PATZTE[i]);
+  // --------------------------------------------
+  const SARHuawei = ChartDataForColumnGraphHuawei[2];
+  const SARZTE = ChartDataForColumnGraphZTE[2];
+  const AllvendorSAR = SARHuawei.map((a, i) => a + SARZTE[i]);
+  // --------------------------------------------
+  const ComHuawei = ChartDataForColumnGraphHuawei[3];
+  const ComZTE = ChartDataForColumnGraphZTE[3];
+  const AllvendorCom = ComHuawei.map((a, i) => a + ComZTE[i]);
+  // --------------------------------------------
+  const InsHuawei = ChartDataForColumnGraphHuawei[4];
+  const InsZTE = ChartDataForColumnGraphZTE[4];
+  const AllvendorIns = InsHuawei.map((a, i) => a + InsZTE[i]);
+  // --------------------------------------------
+  const MobHuawei = ChartDataForColumnGraphHuawei[5];
+  const MobZTE = ChartDataForColumnGraphZTE[5];
+  const AllvendorMob = MobHuawei.map((a, i) => a + MobZTE[i]);
+  // ----------------------------------------------
+
+  const ChartDataForColumnGraphVendor = [
+    AllvendorOnAir,
+    AllvendorPAT,
+    AllvendorSAR,
+    AllvendorCom,
+    AllvendorIns,
+    AllvendorMob
+  ];
+
+  // ----------------- ChartDataForColumnGraph ---------------------------------------------
 
   const onAir1 = ChartDataForColumnGraphMobitel[0];
   const onAir2 = ChartDataForColumnGraphVendor[0];
@@ -230,7 +479,62 @@ export default function DashboardApp() {
           <Typography variant="h6" gutterBottom>
             All Projects Overview
           </Typography>
-          <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2} />
+        </Stack>
+        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
+          <Typography variant="caption1">Select Options</Typography>
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+            spacing={1}
+            mb={0}
+          >
+            <TextField
+              style={{ float: 'right' }}
+              sx={{ width: 200 }}
+              size="small"
+              id="outlined-select-currency"
+              select
+              value={MobitelDropdownValue}
+              onChange={handleMobitelDropdownValue}
+            >
+              {MobitelprojectNames.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              style={{ float: 'right' }}
+              sx={{ width: 200 }}
+              size="small"
+              id="outlined-select-currency"
+              select
+              value={VendorHuaweiDropdownValue}
+              onChange={handleHuaweiVendorDropdownValue}
+            >
+              {VendorprojectNames.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              style={{ float: 'right' }}
+              sx={{ width: 200 }}
+              size="small"
+              id="outlined-select-currency"
+              select
+              value={VendorZTEDropdownValue}
+              onChange={handleZTEVendorDropdownValue}
+            >
+              {VendorprojectsZTENames.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Stack>
         </Stack>
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6} md={2.4}>
@@ -249,23 +553,24 @@ export default function DashboardApp() {
             <AppBugReports holdData={HoldSitesData} />
           </Grid>
           <Grid item xs={12} md={6} lg={8}>
-            <br />
             <AppWebsiteVisits chartData={columnChartData} xaxisData={XaxisDataMobitel} />
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
-            <br />
             <AppCurrentVisits
               projectCompletionMobitel={ProjectCompletionMobitel}
-              projectCompletionVendor={ProjectCompletionVendor}
+              projectCompletionHuawei={ProjectCompletionHuawei}
+              projectCompletionZTE={ProjectCompletionZTE}
             />
           </Grid>
           <Grid item xs={12} md={6} lg={12} mb={0}>
             <AppWebsiteVisits1
               xAxisDaysLabel={XAxisDaysLabelMobitel}
               weeklyProgressDataMobitel={WeeklyProgressDataMobitel}
-              weeklyProgressDataVendor={WeeklyProgressDataVendor}
+              weeklyProgressDataHuawei={WeeklyProgressDataHuawei}
+              weeklyProgressDataZTE={WeeklyProgressDataZTE}
               completedSitesMobitel={CompletedSitesMobitel}
-              completedSitesVendor={CompletedSitesVendor}
+              completedSitesHuawei={CompletedSitesHuawei}
+              completedSitesZTE={CompletedSitesZTE}
             />
           </Grid>
           <Grid item xs={12} md={6} lg={12} mb={0}>
@@ -276,7 +581,8 @@ export default function DashboardApp() {
                   onClick={() => {
                     showMobitelProjectsUpdates();
                     fetchMobitelProjectsLastUpdates();
-                    fetchVendorProjectsLastUpdates();
+                    fetchHuaweiVendorProjectsLastUpdates();
+                    fetchZTEVendorProjectsLastUpdates();
                   }}
                 >
                   Mobitel projects
@@ -286,7 +592,8 @@ export default function DashboardApp() {
                   onClick={() => {
                     showVendorProjectsUpdates();
                     fetchMobitelProjectsLastUpdates();
-                    fetchVendorProjectsLastUpdates();
+                    fetchHuaweiVendorProjectsLastUpdates();
+                    fetchZTEVendorProjectsLastUpdates();
                   }}
                 >
                   Vendor projects
@@ -295,7 +602,12 @@ export default function DashboardApp() {
               {MobitelUpdatesIsShown && (
                 <LastUpdatesMobitel mobitelLastUpdates={MobitelLastUpdates} />
               )}
-              {VendorUpdatesIsShown && <LastUpdatesVendor vendorLastUpdates={VendorLastUpdates} />}
+              {VendorUpdatesIsShown && (
+                <LastUpdatesVendor
+                  huaweiLastUpdates={HuaweiLastUpdates}
+                  zteLastUpdates={ZTELastUpdates}
+                />
+              )}
             </Card>
           </Grid>
         </Grid>

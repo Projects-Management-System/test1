@@ -544,7 +544,7 @@ export default function DataEditFormNew() {
     setShowCheckMark2((show) => !show);
     if (showCheckMark2 === false) {
       newPost.Assigned_Date = 'Not Applicable';
-    } else if (showCheckMark1 === true) {
+    } else if (showCheckMark2 === true) {
       newPost.Assigned_Date = '';
     }
   };
@@ -553,10 +553,12 @@ export default function DataEditFormNew() {
     setShowCheckMark3((show) => !show);
     if (showCheckMark3 === false) {
       newPost.HO_Modified_Date = 'Not Applicable';
-    } else if (showCheckMark1 === true) {
+    } else if (showCheckMark3 === true) {
       newPost.HO_Modified_Date = '';
     }
   };
+
+  console.log(newPost.HO_Modified_Date);
 
   const handleShowPassword4 = () => {
     setShowCheckMark4((show) => !show);
@@ -945,9 +947,6 @@ export default function DataEditFormNew() {
     }
   };
 
-  // console.log(newPost.On_Air_Target);
-  console.log(newPost.Balance_Material_Returned_Date);
-
   const onInputChange = (e) => {
     setNewPost({ ...newPost, [e.target.name]: e.target.value });
   };
@@ -1070,8 +1069,9 @@ export default function DataEditFormNew() {
     setTimeout(() => {
       setAlert2(false);
     }, 6000);
-    console.log(newPost);
-    // navigate('/dashboard/DatabasesMobitelProjects', { replace: true });
+    setTimeout(() => {
+      navigate('/dashboard/DatabasesMobitelProjects/AllMobitelProjects', { replace: true });
+    }, 1000);
   };
 
   const dataSchema = Yup.object().shape({

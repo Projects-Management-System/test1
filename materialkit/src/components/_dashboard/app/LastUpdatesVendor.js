@@ -9,7 +9,11 @@ import { ImagesArray } from './TowerImages';
 import Scrollbar from '../../Scrollbar';
 
 // --------------------------------------------------------------
-export default function LastUpdatesVendor({ vendorLastUpdates }) {
+export default function LastUpdatesVendor({ huaweiLastUpdates, zteLastUpdates }) {
+  const vendorLastUpdatesSlice = huaweiLastUpdates.concat(zteLastUpdates);
+  const vendorLastUpdates = vendorLastUpdatesSlice.slice(0, 5);
+  console.log(vendorLastUpdates);
+
   return (
     <Card>
       <CardHeader title="Latest Updates - Vendor Projects" />

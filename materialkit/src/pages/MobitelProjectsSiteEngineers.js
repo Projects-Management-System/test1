@@ -48,6 +48,14 @@ export default function MobitelProjectsSiteEngineers() {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ]);
+  const [ChartDatForColumnGraphMonthlyWise, setChartDatForColumnGraphMonthlyWise] = useState([
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  ]);
   const [XaxisData, setXaxisData] = useState([]);
   const [ProjectCompletion, setProjectCompletion] = useState([0, 0, 0]);
   const [SitesOnAir, setSitesOnAir] = useState([0, 0, 0]);
@@ -99,6 +107,7 @@ export default function MobitelProjectsSiteEngineers() {
       })
       .then((res) => {
         setChartDatForColumnGraph(res.data.chartDataForFrontEnd);
+        setChartDatForColumnGraphMonthlyWise(res.data.chartDataForTheFrontEndMonthlyWise);
         setXaxisData(res.data.XaxisDataForTheGraphs);
         setWidthdrawnDataforSquares(res.data.WidthdrawnDataforSquares);
         setHandoverData(res.data.HandOverDataToSquares);
@@ -134,7 +143,7 @@ export default function MobitelProjectsSiteEngineers() {
   const siteEngineerNames = siteEngineerNamesArray;
 
   const siteEgineersScopeData = WidthdrawnDataforSquares[0] + HandoverData[0];
-  // ----------------------------------------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
 
   const handleChangeSiteEngineers = (event) => {
     setDropdownValue(event.target.value);
@@ -229,7 +238,11 @@ export default function MobitelProjectsSiteEngineers() {
             <AppBugReports holdData={HoldSitesData} />
           </Grid>
           <Grid item xs={12} md={6} lg={8}>
-            <AppWebsiteVisits chartData={ChartDatForColumnGraph} xaxisData={XaxisData} />
+            <AppWebsiteVisits
+              chartData={ChartDatForColumnGraph}
+              chartDataMonthly={ChartDatForColumnGraphMonthlyWise}
+              xaxisData={XaxisData}
+            />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>

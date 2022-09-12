@@ -41,11 +41,11 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 
 const MENU_OPTIONS = [
   {
-    label: 'Vendor Projects Database',
+    label: 'Vendor Projects',
     linkTo: '/dashboard/DatabasesVendorProjectsAll/ViewOnly'
   },
   {
-    label: 'Mobitel Projects Database',
+    label: 'Mobitel Projects',
     linkTo: '/dashboard/DatabasesMobitelProjects/AllMobitelProjects/ViewOnly'
   }
 ];
@@ -77,7 +77,7 @@ export default function DatabasesView() {
         open={open}
         onClose={handleClose}
         anchorEl={anchorRef.current}
-        sx={{ width: 245 }}
+        sx={{ width: 205 }}
       >
         {MENU_OPTIONS.map((option) => (
           <MenuItem

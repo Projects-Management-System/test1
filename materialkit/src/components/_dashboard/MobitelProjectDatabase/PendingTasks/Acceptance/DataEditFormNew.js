@@ -4,28 +4,28 @@ import * as Yup from 'yup';
 import CryptoJS from 'react-native-crypto-js';
 import { Link as RouterLink, useNavigate, useParams } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
-import { Icon } from '@iconify/react';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import CheckMark from '@iconify/icons-eva/checkmark-fill';
+import Clear from '@iconify/icons-eva/question-mark-outline';
+import { Icon } from '@iconify/react';
 // material
 import Alert from '@mui/material/Alert';
-import { Stack, TextField, Button, Grid, Box, Typography, Link } from '@mui/material';
+import {
+  Stack,
+  TextField,
+  Button,
+  Grid,
+  Typography,
+  Link,
+  IconButton,
+  InputAdornment
+} from '@mui/material';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
-import CloseIcon from '@mui/icons-material/Close';
-import { LoadingButton } from '@mui/lab';
 import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
-import Snackbar from '@mui/material/Snackbar';
-import Checkbox from '@mui/material/Checkbox';
-import ListItemText from '@mui/material/ListItemText';
 /* eslint-disable camelcase */
 
 const Implementation_ByVendor = [
@@ -2938,7 +2938,16 @@ export default function DataEditFormNew() {
                 fullWidth
                 type="date"
                 label="Check List Submitted Date"
-                inputProps={{ style: { color: 'gray' } }}
+                InputProps={{
+                  style: { color: 'gray' },
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleShowPassword33} edge="end">
+                        <Icon icon={showCheckMark33 ? CheckMark : Clear} />
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
               />
             </Stack>
             <Stack spacing={2} direction="row" mb={3}>
@@ -2951,7 +2960,16 @@ export default function DataEditFormNew() {
                 fullWidth
                 type="date"
                 label="Check List Verified Date"
-                inputProps={{ style: { color: 'gray' } }}
+                InputProps={{
+                  style: { color: 'gray' },
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleShowPassword34} edge="end">
+                        <Icon icon={showCheckMark34 ? CheckMark : Clear} />
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
               />
               <TextField // -----------------------------------------------------------  On Air Status--------------------
                 InputLabelProps={{ shrink: true }}
@@ -2995,7 +3013,16 @@ export default function DataEditFormNew() {
                 fullWidth
                 type="date"
                 label="Material Reconciled"
-                inputProps={{ style: { color: 'gray' } }}
+                InputProps={{
+                  style: { color: 'gray' },
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleShowPassword35} edge="end">
+                        <Icon icon={showCheckMark35 ? CheckMark : Clear} />
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
               />
             </Stack>
             <Stack spacing={2} direction="row" mb={3}>
@@ -3005,10 +3032,20 @@ export default function DataEditFormNew() {
                 onChange={(e) => onInputChange(e)}
                 size="small"
                 value={Balance_Material_Returned_Date}
+                defaultValue="Not Available"
                 fullWidth
                 type="date"
+                InputProps={{
+                  style: { color: 'gray' },
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleShowPassword36} edge="end">
+                        <Icon icon={showCheckMark36 ? CheckMark : Clear} />
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
                 label="Balance Material Returned Date"
-                inputProps={{ style: { color: 'gray' } }}
               />
             </Stack>
           </AccordionDetails>

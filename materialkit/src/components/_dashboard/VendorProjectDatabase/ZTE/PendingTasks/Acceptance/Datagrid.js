@@ -1378,7 +1378,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Planning_ID',
-      headerName: 'Planning ID',
+      headerName: 'Planning_ID',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1389,7 +1389,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Implementation_By',
-      headerName: 'Implementation By',
+      headerName: 'Implementation_By',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1415,7 +1415,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Site_ID',
-      headerName: 'Site ID',
+      headerName: 'Site_ID',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1426,7 +1426,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Site_Name',
-      headerName: 'Site Name',
+      headerName: 'Site_Name',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1437,7 +1437,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Date',
-      headerName: 'Handover Date',
+      headerName: 'HO_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueSetter: setHO_Date,
@@ -1451,7 +1451,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Modification',
-      headerName: 'HO Modification',
+      headerName: 'HO_Modification',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1464,7 +1464,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'HO_Modified_Date',
-      headerName: 'HO Modified Date',
+      headerName: 'HO_Modified_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueSetter: setHO_Modified_Date,
@@ -1492,7 +1492,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'New_RAT',
-      headerName: 'New RAT',
+      headerName: 'New_RAT',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -1792,7 +1792,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
       width: 180,
       cellClassName: (params) => clsx('super-app-theme--cell'),
       type: 'singleSelect',
-      valueOptions: ['New SIte', 'GS Site', 'VIP'],
+      valueOptions: [],
       hide: true,
       editable: true
     },
@@ -1840,26 +1840,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
       width: 200,
       cellClassName: (params) => clsx('super-app-theme--cell'),
       type: 'singleSelect',
-      valueOptions: [
-        'On Air',
-        'Site Withdrawn',
-        'PAT Pending',
-        'Commissioning Pending',
-        'Commissioned / Power Pending',
-        'Installed / Power Pending',
-        'Installed / TX Pending / Power Pending',
-        'Installation WIP / Power Pending',
-        'Installation Pending / Power Not Connected',
-        'Installed / TX Pending',
-        'Installation Pending',
-        'Tower Pending / Power Not Connected',
-        'Relocation Pending / Power Pending',
-        'Equipment Pending / Power Not Connected',
-        'Equipment Pending',
-        'Approval Pending',
-        'SAQ Clearance Pending',
-        'Supply Only'
-      ],
+      valueOptions: [],
       hide: true,
       editable: true
     },
@@ -1872,27 +1853,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
       width: 180,
       cellClassName: (params) => clsx('super-app-theme--cell'),
       type: 'singleSelect',
-      valueOptions: [
-        'On Air',
-        'PAT Pending',
-        'PAT Pass',
-        'PAT Reject / Pass with minor',
-        'Commission Pending',
-        'Power Pending',
-        'TX & Power Pending',
-        'TX Pending',
-        'Installation Pending',
-        'Material Pending',
-        'MCW Pending',
-        'Approval Pending',
-        'TSSR Pending',
-        'TSSR Approval Pending',
-        'SAQ Issue',
-        'Civil Pending',
-        'Installation Pending/ Power Pending',
-        'Withdrawn',
-        'To be withdrawn'
-      ],
+      valueOptions: [],
       hide: true,
       editable: true
     },
@@ -1905,19 +1866,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
       width: 220,
       cellClassName: (params) => clsx('super-app-theme--cell'),
       type: 'singleSelect',
-      valueOptions: [
-        'Not Apllicable',
-        'Regional Operations',
-        'Project',
-        'Power',
-        'Power / Transmission',
-        'Project / Power',
-        'Transmission',
-        'Civil',
-        'RNO / PRC',
-        'RNO',
-        'SAQ'
-      ],
+      valueOptions: [],
       hide: true,
       editable: true
     },
@@ -2551,7 +2500,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'SAR_Reference',
-      headerName: 'SAR Reference',
+      headerName: 'SAR_Reference',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2562,7 +2511,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'SAR_Status',
-      headerName: 'SAR Status',
+      headerName: 'SAR_Status',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2575,7 +2524,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'SAR_Date',
-      headerName: 'SAR Date',
+      headerName: 'SAR_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getSAR_Date,
@@ -2589,7 +2538,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'PAT_Reference',
-      headerName: 'PAT Reference',
+      headerName: 'PAT_Reference',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2600,7 +2549,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'PAT_Status',
-      headerName: 'PAT Status',
+      headerName: 'PAT_Status',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2613,7 +2562,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'PAT_Submitted',
-      headerName: 'PAT Submitted Date',
+      headerName: 'PAT_Submitted',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getPAT_Submitted,
@@ -2627,7 +2576,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'PAT_Pass_Date',
-      headerName: 'PAT Pass Date',
+      headerName: 'PAT_Pass_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getPAT_Pass_Date,
@@ -2641,7 +2590,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Check_List_Submitted',
-      headerName: 'Check List Submitted',
+      headerName: 'Check_List_Submitted',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getCheck_List_Submitted,
@@ -2655,7 +2604,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Check_List_Verified',
-      headerName: 'Check List Verified',
+      headerName: 'Check_List_Verified',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getCheck_List_Verified,
@@ -2669,7 +2618,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'On_Air_Status',
-      headerName: 'On Air Status',
+      headerName: 'On_Air_Status',
       headerClassName: 'super-app-theme--header',
       headerAlign: 'left',
       align: 'left',
@@ -2682,7 +2631,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'On_Air_Date',
-      headerName: 'On Air Date',
+      headerName: 'On_Air_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getOn_Air_Date,
@@ -2696,7 +2645,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Material_Reconciled',
-      headerName: 'Material Reconciled',
+      headerName: 'Material_Reconciled',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getMaterial_Reconciled,
@@ -2710,7 +2659,7 @@ export default function Datagrid({ DropDownValue, ProjectNameDropdownValue }) {
     },
     {
       field: 'Balance_Material_Returned_Date',
-      headerName: 'Balance Material Returned Date',
+      headerName: 'Balance_Material_Returned_Date',
       headerClassName: 'super-app-theme--header',
       type: 'date',
       valueGetter: getBalance_Material_Returned_Date,
